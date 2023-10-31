@@ -33,6 +33,7 @@ A function defined in the smart contract wallet that will check its activity on 
 * Activity can be any of the following:&#x20;
   * Outgoing transaction, claim transaction, or voting transaction.
   * In general, activity here is defined as the owner manually utilizing the safe in any way.
+  * The owner is required to sign a message while connecting to the dApp. That way, simply connecting counts as a sign of life in the heart-bit's detection framework.
 * Frequency of the heart-bit can be set to daily, weekly, or monthly.
 
 #### Conditional actions types
@@ -41,21 +42,22 @@ A function defined in the smart contract wallet that will check its activity on 
 
 **Forwarding**. Send all the assets to the pre-designated account(s).
 
-**Destruction.** Send all the assets to Ethereum genesis address, essentially burning the value in the wallet.
-
-**Legacy holding**. Lock the assets for another pre-specified amount of time, essentially restarting another cycle of Heart-bit. Other action types can kick in 2nd, 3rd, or a specified n numbers of cycles.
+**Destruction.** Send all the assets to Ethereum genesis address, essentially burning the value in the wallet. Essentially, destruction is a special case of 'Forwarding' will, all assets being forwarded to one specific unusable address.
 
 A combination of any two above can be used in conjunction for more advanced strategies. For example, someone with little kids might want to make sure that until a mature age, a 3rd party can manage some of the funds in case of emergency.&#x20;
 
 
 
-#### Conditional pre-authorized public keys
+#### Beneficiar(ies) - conditional pre-authorized public key(s)
 
 This part might be one of the most challenging thus far. On one hand, we want to operate via secure and on-chain means only, namely, via Ethereum accounts. On the other hand, the most likely recipients one desires (mainstream) are not familiar enough with the Ethereum rails at this time (nature of any niche emerging technology industry). We discuss here options and ideas to best compromise. Current options from most secure to most friendly:
 
 * An Ethereum public key (address).
 * A social wallet address. Another smart contract accessible by guardians, which can be identified by a phone number providing the corresponding app to such social wallet is installed (e.g Argent).
-* A QR generated code sent by email. The QR code represents the private key of such conditional pre-authorized public key.\
+* A QR generated printed by the owner. The QR code represents the private key of such conditional pre-authorized public key.
+* Printing shall be our main communication channel, as this action is performed by the owner only, avoiding any interaction with a 3rd party service provider.
+  * Printing of private keys should come with different options covering the various use cases and level of familiarity with crypto.&#x20;
+  * An endpoint to immutable interface should be part of the printed paper for the beneficiary to check at any time, from anywhere. The interface will show the time left to future eligibility, if any. \
 
 
 [^1]: 
