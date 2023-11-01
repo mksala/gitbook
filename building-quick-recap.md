@@ -29,3 +29,9 @@ Specify which assets should be sent to which Ethereum accounts. This option is m
 
 
 
+## Superseding will
+
+A new contract will be created and the old contract will be destroyed/deleted. This capability can be performed only by the initial owner of a will.
+
+
+
