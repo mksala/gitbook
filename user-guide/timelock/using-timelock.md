@@ -1,14 +1,14 @@
 ---
 description: >-
   Creating, managing, and claiming each of the three timelock flavors:
-  Timelock, Soft Timelock, Timelocked Gift.
+  Timelock, Soft Timelock, Beneficiary Timelock.
 ---
 
 # Using Timelock
 
-Navigate to the **Timelock** tab of the app. You'll see any timelocks you've created, and any timelocked gifts others have set up with you as the recipient.
+Navigate to the **Timelock** tab of the app. You'll see any timelocks you've created, and any beneficiary timelocks others have set up with you as the recipient.
 
-To create a new one, click **Create timelock** and pick a flavor: Timelock, Soft Timelock, or Timelocked Gift.
+To create a new one, click **Create timelock** and pick a flavor: Timelock, Soft Timelock, or Beneficiary Timelock.
 
 ## Common concepts
 
@@ -35,7 +35,7 @@ A timelock holds what you explicitly approve for it. For each asset:
 |---|---|
 | **Active** | Locked. Funds can't be moved. Progress bar shows how much of the lock has elapsed. |
 | **Unlock pending** (Soft Timelock only) | You've initiated an unlock; the waiting period is counting down. Still can't claim yet. |
-| **Ready** | Lock period has expired. You (or the recipient, for a Timelocked Gift) can claim. |
+| **Ready** | Lock period has expired. You (or the recipient, for a Beneficiary Timelock) can claim. |
 | **Claimed** | Funds have been claimed back. Timelock is done. |
 
 ## Timelock
@@ -79,7 +79,7 @@ While unlock is pending, the timelock is still protected; funds can't be claimed
 
 Once the waiting period elapses, status reads **Ready**. Click claim, sign, done.
 
-## Timelocked Gift
+## Beneficiary Timelock
 
 ### Create
 
@@ -89,16 +89,16 @@ Same flow as Timelock, with two extra fields:
 - **Name**: something meaningful to the recipient, since they'll see it in their dashboard.
 
 {% hint style="info" %}
-**The recipient is notified by the presence of the gift on their dashboard.** They'll see it under a "Gifts to me" section of the Timelock tab, starting as soon as you finalize creation. If you want the gift to be a surprise, consider sharing the information at delivery time rather than at creation time.
+**The recipient is notified by the presence of the timelock on their dashboard.** They'll see it in the Timelock tab as the designated recipient, starting as soon as you finalize creation. If you want it to be a surprise, consider sharing the information at delivery time rather than at creation time. For a designed gift experience with a claim link, printable sheets, and free claiming, use [Heirloom](../heirloom.md) instead.
 {% endhint %}
 
 ### Claim (by the recipient)
 
-1. The recipient opens the Timelock tab; the gift appears under **Gifts to me**.
+1. The recipient opens the Timelock tab; the timelock appears with them as the recipient.
 2. Until the lock elapses, status is **Active**. Once elapsed, status reads **Ready**.
 3. Recipient clicks claim, signs the transaction, and receives the assets directly into their wallet.
 
-The creator can't reverse a timelocked gift after it's created: once locked, the recipient is the only one who can claim at expiry. If the creator wants flexibility to revoke, a regular Timelock (claimable by them, then sent off later) is the right pattern instead.
+The creator can't reverse a beneficiary timelock after it's created: once locked, the recipient is the only one who can claim at expiry. If the creator wants flexibility to revoke, a regular Timelock (claimable by them, then sent off later) is the right pattern instead.
 
 ## Troubleshooting
 

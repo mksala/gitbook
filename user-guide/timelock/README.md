@@ -27,12 +27,13 @@ Three flavors, for three different use cases:
 - This is the anti-wrench-attack variant: even with full access to your keys, an attacker can't immediately drain the balance. They have to initiate an unlock and wait, during which you (or anyone watching) can notice.
 - Useful for: high-value cold-storage-style protection without cold-storage operational overhead, compromise-tolerant self-custody.
 
-## Timelocked Gift
+## Beneficiary Timelock
 
 **Locked until a specific date; then a designated recipient claims.**
 
-- Same release mechanics as a regular Timelock, but the recipient is another wallet, not the owner.
-- Useful for: scheduled gifts (child's 18th birthday, anniversary), planned giving, trust-fund-style disbursements, escrow-like arrangements.
+- Same release mechanics as a regular Timelock, but the recipient is another wallet, not the owner. (The contract calls this type `Gift` on-chain; the app labels it Beneficiary timelock.)
+- Useful for: planned giving, trust-fund-style disbursements, escrow-like arrangements.
+- For an actual gift-giving experience (occasion designs, a claim link the recipient opens, printable sheets, free claiming), use [Heirloom](../heirloom.md), which seals the same contract type with a friendlier wrapper.
 
 ## Which to pick
 
@@ -40,7 +41,8 @@ Three flavors, for three different use cases:
 |---|---|
 | Force yourself not to touch funds for N days | **Timelock** |
 | Protect yourself if someone coerces you or compromises your keys | **Soft Timelock** |
-| Schedule a future transfer to someone else | **Timelocked Gift** |
+| Schedule a future transfer to someone else | **Beneficiary Timelock** |
+| Send someone a sealed gift they open with a link | [**Heirloom**](../heirloom.md) |
 
 ## How timelocks hold your assets
 

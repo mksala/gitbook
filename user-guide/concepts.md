@@ -68,7 +68,7 @@ A self-directed time-based lock on your own assets. Three flavors:
 
 - **Timelock**: locked until a date; then you reclaim.
 - **Soft timelock**: locked indefinitely; a waiting period starts when _you_ initiate an unlock.
-- **Timelocked gift**: locked until a date; then a specified recipient claims.
+- **Beneficiary timelock**: locked until a date; then a specified recipient claims. Heirloom wraps this type into a designed gift experience with a claim link and free claiming.
 
 See [Timelock](./timelock/README.md).
 

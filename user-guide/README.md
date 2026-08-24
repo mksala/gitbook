@@ -36,7 +36,8 @@ Unfamiliar with the vocabulary? Skim [Concepts](./concepts.md) first.
 
 ### Timelock
 
-- [Timelock](./timelock/README.md): overview of Timelock, Soft Timelock, Timelocked Gift.
+- [Timelock](./timelock/README.md): overview of Timelock, Soft Timelock, Beneficiary Timelock.
+- [Heirloom (sealed gifts)](./heirloom.md): seal ETH or USDC as a gift that opens on a chosen date.
 - [Using Timelock](./timelock/using-timelock.md): create, unlock, and claim for all three flavors.
 
 ## A note on philosophy

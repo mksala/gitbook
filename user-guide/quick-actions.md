@@ -31,9 +31,9 @@ Use when: you know this will be a multi-beneficiary setup and you'd rather start
 
 ### Schedule a future gift (to a loved one)
 
-Pre-fills a **Timelocked gift** with recipient, locked duration, and assets to include. The locked window is configurable in days.
+Opens [Heirloom](./heirloom.md): seal ETH or USDC as a gift that opens on a chosen date, with occasion designs, printable sheets, and free claiming for the recipient. (Deep links and agent tools that reference this action land on the Heirloom page.)
 
-Use when: you want scheduled delivery to another wallet on a specific date, like planned giving, a child's milestone, or a trust-fund-style disbursement.
+Use when: you want scheduled delivery to a loved one on a specific date, like a child's milestone, a wedding, or planned giving.
 
 ### Protect all my funds (for a waiting period)
 
