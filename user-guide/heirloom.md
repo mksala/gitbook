@@ -32,7 +32,8 @@ the Timelock tab) and fill one card:
 4. **Unlocks**: a preset horizon or an exact date. The date is final and
    can never be shortened.
 5. **Message (optional)**: stays off the blockchain. It travels inside the
-   claim link and prints on the gift card.
+   claim link, prints on the paper's cover (first two lines), and shows on
+   the gift page when the link is opened.
 
 Sealing sends one transaction (two for USDC: an exact-amount approval,
 then the seal). The gift cannot be recalled or changed after it confirms,
@@ -59,10 +60,20 @@ included, so the personal words stay between the two of you.
   claiming below).
 - Share it by copy, WhatsApp, email, or the printed card's QR code.
 
-The seal panel can also email the link for you: enter the recipient's
-email and sign one free message. They get "a gift is waiting" right away
-and "your gift just unlocked" on opening day. The address is stored
-encrypted and deleted once its job is done.
+The seal panel can also email the link for you, with a timing choice:
+
+- **Right away**: "a gift is waiting" today, plus a reminder on opening
+  day.
+- **On a day you pick**: nothing today; the announcement goes out on the
+  day you choose (the birthday, the wedding), and the opening-day
+  reminder still follows.
+- **On opening day**: full surprise; one email when the gift opens.
+
+You sign one free message to authorize it (the signing prompt shows only
+a fingerprint, never the email). The address is stored encrypted and
+deleted once its job is done. The same email panel lives on the gift's
+detail page under Timelocks, so you can add or correct an email any time
+after sealing.
 
 The names, message, and occasion are also kept on the device that sealed
 the gift (never on a server), so the gift's detail page on that device can
@@ -70,39 +81,46 @@ rebuild the full link and the printed card later.
 
 ## The printables
 
-Three artifacts, each with a distinct job:
-
-- **The key sheet** (paper-key gifts only): a single sheet that folds into
-  a three-panel packet. The occasion cover faces front, "How to open your
-  gift" faces back, and the secret key is sealed inside the fold. Print
-  single-sided and fold on the printed dashed lines, in the numbered
-  order. Whoever holds this paper controls the gift: never photograph it
-  open.
-- **The gift card**: the greeting. Occasion design, who it is for, the
-  opening date, your message in quotes, and a QR of the claim link. Safe
-  to share and photograph; it contains no key material and never shows
-  the amount.
+- **The key sheet** (paper-key gifts): one paper holds the whole gift. The
+  occasion cover faces front and carries a big scannable code at the
+  heart of the design: scanning it opens the gift page, with the names,
+  the message, and the countdown. "How to open your gift" faces back, and
+  the secret key is sealed inside the fold, clearly marked THE KEY, NOT A
+  WEB LINK. Print single-sided and fold on the printed dashed lines.
+  Whoever holds this paper controls the gift: never photograph it open.
+  The cover is safe to show; the inside is not.
+- **The gift card** (wallet-address gifts): the digital greeting for gifts
+  sent to an existing wallet. Occasion design, who it is for, the opening
+  date, your message in quotes, and a QR of the claim link. Safe to share
+  and photograph; it contains no key material and never shows the amount.
+  Paper-key gifts don't need it: their sheet already carries everything.
 - **The gift record**: a factual document for the giver, downloadable
   from the gift's detail page. It leads with the fair market value on the
-  sealing date, then dates, amounts, shortened wallet addresses, and the
-  escrow contract, with instructions for verifying everything on the
-  public ledger. It is not tax advice and says so; hand it to your
-  advisor.
+  sealing date, then dates, amounts, shortened wallet addresses, the
+  escrow contract, and the sealing transaction as a scannable code and
+  link for direct verification on the public ledger. It is not tax advice
+  and says so; hand it to your advisor.
 
 ## Claiming (free for the recipient)
 
-On opening day the recipient opens the link, connects or imports their
-wallet, and claims:
+On opening day the recipient opens the link (or scans the paper's front
+again) and claims:
 
-- Claiming costs the recipient nothing. They sign one free message and
-  10102 submits the transaction and pays the network fee. The signature
-  only proves who they are; the contract pays out strictly to the
-  on-chain recipient.
-- If the sponsored path is ever unavailable, the recipient can submit the
-  withdrawal themselves from their own wallet instead.
-- Before opening day, the gift page shows a countdown and can add the
-  opening day to Google Calendar or any calendar app. Nothing is sent to
-  our servers.
+- **With the paper alone**: the gift page asks for the key folded inside
+  the sheet. Scan it with the camera or type it in; the key signs the
+  claim on the recipient's own device and never leaves it. No wallet app,
+  no account, nothing to install.
+- **With a wallet**: connect the wallet the gift was sealed for and sign
+  one free message.
+- Either way, claiming costs the recipient nothing: 10102 submits the
+  transaction and pays the network fee, and the contract pays out
+  strictly to the on-chain recipient.
+- If the sponsored path is ever unavailable, a wallet holder can submit
+  the withdrawal self-paid, and a paper holder can import the key into a
+  wallet app (MetaMask: "Import account") and do the same.
+- Before opening day, the gift page shows a live countdown to the second,
+  can add the opening day to Google Calendar or any calendar app, and can
+  be shared or copied with one tap. Nothing is sent to our servers.
 - After claiming, the page becomes a small keepsake: sealed date, opened
   date, and an invitation to seal one forward.
 

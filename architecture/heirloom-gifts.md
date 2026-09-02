@@ -42,6 +42,19 @@ A claim link is `/heirloom/{chainId}/{timelockId}#g=<base64url payload>`.
   personal message. Fragments are never sent in HTTP requests, so no
   server (ours, an email provider's link scanner, anyone's) sees the
   note. The gift page decodes it locally.
+- The **query** may carry two non-personal hints: `o=<occasion>` selects
+  the themed link-preview card (crawlers must see it, hence not in the
+  fragment), and `paper=1` marks paper-key gifts so the page shows the
+  paper guidance however the visitor arrived.
+
+Paper-key gifts get a second, address-based entry:
+`/heirloom/for/{giftWalletAddress}` — the target of the QR printed on the
+key sheet's COVER. The sheet must print before sealing, when no timelock
+id exists yet, but the gift wallet's address is already known. The page
+resolves the newest gift sealed to that address via the subgraph and
+forwards to the canonical gift page, carrying the fragment through. The
+cover QR embeds the personal payload in its fragment too, so a scanned
+paper opens the page fully personalized.
 - The sealing device also stores a **keepsake** (payload, occasion, card
   mode) in `localStorage`, keyed by chain and timelock id. This lets the
   gift's detail page rebuild the full link and the themed card later, on
@@ -96,16 +109,27 @@ Why this cannot be drained:
 Availability is reported by `GET /sponsor/status` as a `gift` field,
 separate from the legacy sponsor's readiness.
 
+**Paper-key claims** ride the same relay with a different signer: the
+claim page accepts the printed key directly (camera scan via the native
+BarcodeDetector where available, typed otherwise), builds an in-memory
+account from it, and signs the same `WithdrawAuth` locally. The key never
+leaves the device and is never persisted; only the signature travels.
+This path is sponsored-only by design, because the gift wallet holds the
+escrowed gift but no ETH for gas.
+
 ## Notify emails
 
-`POST /gift/notify` lets the GIVER register a recipient email for two
-sends: "a gift is waiting" immediately and "your gift just unlocked" on
-opening day.
+`POST /gift/notify` lets the GIVER register a recipient email with a
+timing choice: "a gift is waiting" immediately, on a scheduled day of the
+giver's choosing (`notify_at`, e.g. the birthday itself), or not at all —
+plus "your gift just unlocked" on opening day in every mode.
 
-- **Owner-signed EIP-712**: the signature covers the exact payload
-  string, and the worker verifies the signer against the timelock's
-  on-chain owner via the subgraph. Only the actual giver can email
-  anyone; this is the anti-spam core.
+- **Owner-signed EIP-712**: the signature covers the sha256 HASH of the
+  payload (`GiftNotify2`), binding the exact content while keeping the
+  email out of wallet signing prompts. The worker hashes the payload it
+  receives, verifies the signature, and checks the signer against the
+  timelock's on-chain owner via the subgraph. Only the actual giver can
+  email anyone; this is the anti-spam core.
 - **Claim-link origins are allowlisted** so a malicious payload cannot
   point victims at a phishing domain wearing our email template.
 - **Encrypted at rest**: the payload (email, names, the full claim link
