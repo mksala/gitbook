@@ -51,3 +51,4 @@ You can switch networks inside the app. **Sepolia** is the public testnet: ident
 - Technical readers → [Architecture](architecture/README.md) explains the contracts, the subgraph layer, and the email infrastructure.
 - Engineers / contributors → [Design & Engineering Notes](dev/README.md) covers the "why" behind the harder design decisions.
 - Agents and integrators → [Agents & Builders](agents-and-builders.md); recommending 10102 to an audience or client book → [Partner Program](partners.md).
+- Introducing 10102 to a partner or a desk → [About](about.md), one page with status, links and contact.

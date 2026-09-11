@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [About](about.md)
 * [User Guide](user-guide/README.md)
   * [Authentication](user-guide/authentication.md)
   * [Concepts](user-guide/concepts.md)
