@@ -117,6 +117,41 @@ leaves the device and is never persisted; only the signature travels.
 This path is sponsored-only by design, because the gift wallet holds the
 escrowed gift but no ETH for gas.
 
+## Email-addressed gifts (Turnkey)
+
+A gift is sealed to an address, so "send it to an email" means "seal it
+to the address that email controls". Two halves, one relay:
+
+- **Seal side.** The giver signs an EIP-712 `GiftEmailWallet{emailHash,
+  deadline}` (the hash rides in the message; the email itself only in
+  the request body, over TLS) and the frontend calls the worker's
+  `POST /gift/recipient-wallet`. The worker finds or creates a Turnkey
+  **sub-organization** for that email, keyed by a salted hash, whose only
+  root user is the email (email OTP authenticator) and which holds one
+  Ethereum wallet. It returns the address; the seal transaction is the
+  ordinary one. Per-IP limits and a daily creation cap bound the
+  minting. The worker stores `emailHash -> subOrgId` only; the raw email
+  rides the existing encrypted notify path, and the claim link carries
+  `email=1`.
+- **Claim side.** The gift page talks to Turnkey's Auth Proxy directly
+  with two public IDs (organization and auth-proxy config): send the
+  code, verify it, log the session in, then the embedded wallet signs
+  the same `WithdrawAuth` the paper key signs. The signer seam in the
+  claim hook is the only thing that changes; the relay and the contract
+  do not know which kind of signer produced the signature.
+
+Custody, stated plainly: the key lives in Turnkey's enclaves and signs
+only after the email's owner verifies with the code; 10102's API key can
+create sub-organizations but holds no authority inside them. This is a
+step away from self-custody (the recipient depends on their inbox and on
+Turnkey's service), which the user guide says in as many words. The
+paper key stays the fully self-sovereign path.
+
+Readiness is reported by `GET /sponsor/status` as `giftEmail` (all three
+`TURNKEY_*` variables set on the worker); the create page offers the mode
+only when it reads true, and the frontend has a kill switch
+(`VITE_FEATURE_GIFT_EMAIL=false`).
+
 ## Notify emails
 
 `POST /gift/notify` lets the GIVER register a recipient email with a

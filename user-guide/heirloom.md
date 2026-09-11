@@ -22,10 +22,14 @@ the Timelock tab) and fill one card:
    Hanukkah, Christmas, Eid, or Someday. The occasion sets the design of
    the printable sheets and suggests a message. It also proposes a fitting
    unlock horizon (five years for most occasions, eighteen for a new baby).
-2. **To**: either the recipient's wallet address, or, when they have no
-   wallet, **No wallet? Hand them a card**: the app generates a fresh
-   wallet for the gift and you hand its key over on paper. The paper is
-   the gift.
+2. **To**: three ways to address it.
+   - **Their wallet**: paste the recipient's wallet address.
+   - **Just their email**: type the recipient's email. The gift is sealed
+     to a wallet that only that email can open (see "Email gifts" below).
+     Sealing asks for one extra signature, the wallet lookup, before the
+     transaction.
+   - **A printed card**: the app generates a fresh wallet for the gift
+     and you hand its key over on paper. The paper is the gift.
 3. **Amount**: ETH, or USDC for stable value. Both are escrowed on
    sealing; the choice changes what the recipient receives, not how the
    seal works.
@@ -110,9 +114,13 @@ again) and claims:
   the sheet. Scan it with the camera or type it in; the key signs the
   claim on the recipient's own device and never leaves it. No wallet app,
   no account, nothing to install.
+- **With their email** (email gifts): the gift page asks for the email
+  the gift was sent to, then for the six-digit code that arrives in that
+  inbox. Typing the code is the whole login. The wallet behind the email
+  signs the claim and 10102 submits it.
 - **With a wallet**: connect the wallet the gift was sealed for and sign
   one free message.
-- Either way, claiming costs the recipient nothing: 10102 submits the
+- Whichever way, claiming costs the recipient nothing: 10102 submits the
   transaction and pays the network fee, and the contract pays out
   strictly to the on-chain recipient.
 - If the sponsored path is ever unavailable, a wallet holder can submit
@@ -124,10 +132,37 @@ again) and claims:
 - After claiming, the page becomes a small keepsake: sealed date, opened
   date, and an invitation to seal one forward.
 
+## Email gifts
+
+"Just their email" exists for the recipient who has no wallet and should
+not need one: a grandparent, a child, a friend who has never touched
+crypto. Here is exactly what happens, so you can decide if it fits.
+
+- At sealing time we ask Turnkey, an embedded-wallet provider, for a
+  wallet tied to that email. If none exists, one is created. The gift is
+  sealed to that wallet's address, on-chain, like any other gift.
+- The wallet's private key lives inside Turnkey's secure hardware
+  enclaves. Nobody, including 10102, can read it. It signs only after the
+  email's owner proves it is them with the code, and 10102 holds no
+  credential that could move the funds.
+- On opening day the recipient enters the email and the code, and the
+  wallet signs the claim. The funds land in that same email wallet, and
+  the recipient can log in again on the gift page any time. A one-tap
+  "move to my own wallet" step is on the roadmap; until it ships, write
+  to info@10102.io and we walk the recipient through the manual path.
+- **The honest trade**: this is a step away from pure self-custody. The
+  recipient depends on their email account and on Turnkey's service to
+  reach the key, where the paper gift and the wallet gift depend on
+  nothing but the key holder. If that trade is not right for your
+  recipient, use the printed card.
+- Double-check the spelling. The gift can only be opened with the exact
+  email you typed; a typo seals it to a wallet nobody will ever log into,
+  and it cannot be recalled.
+
 ## Honest limits
 
 - **Irrevocable**: once sealed, no one can cancel, shorten, or redirect a
-  gift. Triple-check the recipient address and the date.
+  gift. Triple-check the recipient address, or email, and the date.
 - **Paper is a bearer instrument**: for paper-key gifts, losing the key
   sheet before opening day loses the gift, and anyone who photographs the
   open sheet can take it. The sheet says this on the sheet.
